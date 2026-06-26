@@ -9,14 +9,14 @@ import {
   IconExpertise,
   IconSpeed,
   SiteShell,
-  TESTIMONIALS,
+  Testimonials,
 } from '@/components/Sections'
 
 /* ------------------------------------------------------------------ */
-/*  PLACEHOLDER CONTENT — filler copy + stand-in logos, testimonial and  */
-/*  case study to size the sections. The client logos (CLIENTS) are       */
-/*  placeholder marks, the testimonial is fictional, and the case study   */
-/*  below is a stand-in. Replace ALL of it with real proof before launch. */
+/*  PLACEHOLDER CONTENT — filler copy + stand-in logos and case study.    */
+/*  The client logos (CLIENTS) are placeholder marks and the case study   */
+/*  below is a stand-in; the shared <Testimonials/> quotes are fictional. */
+/*  Replace ALL of it with real proof before launch.                      */
 /* ------------------------------------------------------------------ */
 
 // PLACEHOLDER — featured project case study (stand-in copy + reused image).
@@ -28,9 +28,6 @@ const CASE_STUDY = {
   img: '/brand/project-retail.jpg',
   href: '/#projects',
 }
-
-// PLACEHOLDER — single featured quote pulled from the (fictional) testimonial set.
-const FEATURED_QUOTE = TESTIMONIALS[0]
 
 const SECTORS = [
   {
@@ -172,7 +169,7 @@ export function AboutPage() {
         {/* Sectors — three image cards */}
         <section className="bg-sw-white pb-16 md:pb-24">
           <Container>
-            <h2 className="track-display max-w-2xl text-3xl font-semibold leading-[1.02] md:text-5xl">
+            <h2 className="track-display mx-auto max-w-2xl text-center text-3xl font-semibold leading-[1.02] md:text-5xl">
               Where we work
             </h2>
 
@@ -224,41 +221,19 @@ export function AboutPage() {
           </Container>
         </section>
 
-        {/* Testimonial block — single featured quote */}
-        <section className="bg-sw-white pb-16 md:pb-24">
-          <Container>
-            <figure className="max-w-3xl">
-              <blockquote className="track-body text-2xl leading-snug text-sw-black md:text-[2rem] md:leading-[1.3]">
-                “{FEATURED_QUOTE.quote}”
-              </blockquote>
-              <figcaption className="mt-8 flex items-center gap-5">
-                <img src={FEATURED_QUOTE.logo} alt={FEATURED_QUOTE.brand} className="h-8 w-auto" />
-                <div>
-                  <div className="track-display text-lg font-semibold text-sw-black">
-                    {FEATURED_QUOTE.name}
-                  </div>
-                  <div className="text-base text-sw-orange">
-                    {FEATURED_QUOTE.title} at {FEATURED_QUOTE.brand}
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </Container>
-        </section>
+        {/* Testimonials — same carousel as the homepage */}
+        <Testimonials />
 
-        {/* Trusted-by logo grid */}
+        {/* Trusted-by logo grid — clean grid, no cell outlines */}
         <section className="bg-sw-white pb-16 md:pb-24">
           <Container>
-            <h2 className="track-display max-w-2xl text-3xl font-semibold leading-[1.02] md:text-5xl">
+            <h2 className="track-display mx-auto max-w-2xl text-center text-3xl font-semibold leading-[1.02] md:text-5xl">
               Brands we work with
             </h2>
-            <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-sw-black/10 bg-sw-black/10 sm:grid-cols-4">
+            <div className="mx-auto mt-14 grid max-w-4xl grid-cols-2 items-center gap-x-10 gap-y-14 sm:grid-cols-4">
               {CLIENTS.map((c) => (
-                <div
-                  key={c.name}
-                  className="flex items-center justify-center bg-sw-white px-6 py-10"
-                >
-                  <img src={c.logo} alt={c.name} className="h-7 w-auto opacity-70 md:h-8" />
+                <div key={c.name} className="flex items-center justify-center">
+                  <img src={c.logo} alt={c.name} className="h-9 w-auto md:h-11" />
                 </div>
               ))}
             </div>
@@ -268,7 +243,7 @@ export function AboutPage() {
         {/* What we stand for — pillars */}
         <section className="bg-sw-white pb-16 md:pb-24">
           <Container>
-            <h2 className="track-display max-w-2xl text-3xl font-semibold leading-[1.02] md:text-5xl">
+            <h2 className="track-display mx-auto max-w-2xl text-center text-3xl font-semibold leading-[1.02] md:text-5xl">
               How it is to work with us
             </h2>
 

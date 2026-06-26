@@ -440,19 +440,49 @@ export function Why() {
 /* ------------------------------------------------------------------ */
 
 export function ShowcaseScroll() {
-  const ref = useRef<HTMLDivElement>(null)
-  const [p, setP] = useState(0)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const boxRef = useRef<HTMLDivElement>(null)
+  const textRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const onScroll = () => {
-      const el = ref.current
+    let ticking = false
+
+    const apply = () => {
+      const el = trackRef.current
       if (!el) return
       const rect = el.getBoundingClientRect()
       const total = rect.height - window.innerHeight
-      const prog = total > 0 ? Math.min(Math.max(-rect.top / total, 0), 1) : 0
-      setP(prog)
+      // 0 → image in the right column, 1 → image nearly fills the viewport.
+      // Finish the expansion a touch early so it settles full before unpinning.
+      const raw = total > 0 ? -rect.top / total : 0
+      const p = Math.min(Math.max(raw / 0.82, 0), 1)
+
+      const box = boxRef.current
+      if (box) {
+        const inset = 10 - p * 6
+        box.style.left = `${50 - p * 47}%`
+        box.style.top = `${inset}%`
+        box.style.bottom = `${inset}%`
+      }
+      const text = textRef.current
+      if (text) {
+        text.style.opacity = `${Math.max(0, 1 - p * 1.9)}`
+        text.style.transform = `translate3d(${-p * 40}px,0,0)`
+      }
     }
-    onScroll()
+
+    // One update per frame, tracking the scroll 1:1 (no easing lag) and writing
+    // straight to the DOM — no React re-renders.
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        apply()
+        ticking = false
+      })
+    }
+
+    apply()
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
     return () => {
@@ -461,21 +491,13 @@ export function ShowcaseScroll() {
     }
   }, [])
 
-  // 0 → image sits in the right column; 1 → image nearly fills the viewport
-  const left = 50 - p * 47
-  const inset = 10 - p * 6
-  const textOpacity = Math.max(0, 1 - p * 1.9)
-
   return (
     <section className="bg-sw-white">
-      <div ref={ref} className="relative h-[230vh]">
+      <div ref={trackRef} className="relative h-[170vh]">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           {/* Text — fades as the image takes over */}
           <Container className="relative z-10 w-full">
-            <div
-              className="max-w-md"
-              style={{ opacity: textOpacity, transform: `translateX(${-p * 40}px)` }}
-            >
+            <div ref={textRef} className="max-w-md [will-change:transform,opacity]">
               <span className="eyebrow text-sw-orange">Our work</span>
               <h2 className="track-display mt-5 text-3xl font-semibold leading-[1.05] md:text-5xl">
                 Spaces people remember
@@ -492,13 +514,9 @@ export function ShowcaseScroll() {
 
           {/* Expanding image */}
           <div
+            ref={boxRef}
             className="absolute overflow-hidden rounded-2xl ring-1 ring-sw-black/5"
-            style={{
-              left: `${left}%`,
-              right: '3%',
-              top: `${inset}%`,
-              bottom: `${inset}%`,
-            }}
+            style={{ left: '50%', right: '3%', top: '10%', bottom: '10%' }}
           >
             <img
               src="/brand/project-retail.jpg"
@@ -750,18 +768,18 @@ export function Testimonials() {
 export function TrustedBy() {
   return (
     <section className="border-b border-sw-black/10 bg-sw-white">
-      <Container className="flex flex-col gap-7 py-9 md:flex-row md:items-center md:gap-12 md:py-10">
-        <p className="max-w-[13rem] shrink-0 text-base leading-snug text-graphite">
-          Trusted by leading retail, hospitality &amp; corporate teams
-        </p>
+      <Container className="flex flex-col gap-8 py-10 md:flex-row md:items-center md:gap-14 md:py-14">
+        <h2 className="track-display max-w-xs shrink-0 text-2xl font-semibold leading-[1.1] text-sw-black md:text-3xl">
+          Trusted by leading commercial brands
+        </h2>
         <div className="marquee-track relative min-w-0 flex-1 overflow-hidden">
-          <div className="flex w-max animate-marquee items-center gap-12 md:gap-16">
+          <div className="flex w-max animate-marquee items-center gap-14 md:gap-20">
             {[...CLIENTS, ...CLIENTS].map((c, i) => (
               <img
                 key={`${c.name}-${i}`}
                 src={c.logo}
                 alt={c.name}
-                className="h-6 w-auto shrink-0 opacity-70 transition-opacity hover:opacity-100 md:h-7"
+                className="h-8 w-auto shrink-0 md:h-10"
               />
             ))}
           </div>

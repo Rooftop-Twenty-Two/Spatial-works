@@ -1,7 +1,7 @@
 <svg viewBox="0 0 184 48" xmlns="http://www.w3.org/2000/svg" fill="none">
-  <g stroke="#9aa0b3" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+  <g stroke="#363a47" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
     <path d="M11 31 L24 13 L37 31" />
     <path d="M16 37 L24 26 L32 37" />
   </g>
-  <text x="50" y="31" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.2" fill="#9aa0b3">Northside</text>
+  <text x="50" y="31" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.2" fill="#363a47">Northside</text>
 </svg>

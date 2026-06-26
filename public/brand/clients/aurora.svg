@@ -1,7 +1,7 @@
 <svg viewBox="0 0 168 48" xmlns="http://www.w3.org/2000/svg" fill="none">
-  <g stroke="#9aa0b3" stroke-width="2.6" stroke-linecap="round">
+  <g stroke="#363a47" stroke-width="2.6" stroke-linecap="round">
     <path d="M10 33 A14 14 0 0 1 38 33" />
     <path d="M24 7 V13 M9 16 L13 19 M39 16 L35 19 M6 33 H10 M38 33 H42" />
   </g>
-  <text x="52" y="31" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.2" fill="#9aa0b3">Aurora</text>
+  <text x="52" y="31" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.2" fill="#363a47">Aurora</text>
 </svg>

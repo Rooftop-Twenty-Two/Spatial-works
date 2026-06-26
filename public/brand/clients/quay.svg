@@ -1,7 +1,7 @@
 <svg viewBox="0 0 160 48" xmlns="http://www.w3.org/2000/svg" fill="none">
-  <g stroke="#9aa0b3" stroke-width="2.6" stroke-linecap="round">
+  <g stroke="#363a47" stroke-width="2.6" stroke-linecap="round">
     <circle cx="24" cy="24" r="13" />
     <path d="M30 30 L38 38" />
   </g>
-  <text x="50" y="31" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.2" fill="#9aa0b3">Quay</text>
+  <text x="50" y="31" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.2" fill="#363a47">Quay</text>
 </svg>
