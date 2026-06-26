@@ -1,0 +1,7 @@
+<svg viewBox="0 0 188 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <g stroke="#9aa0b3" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M11 22 L24 11 L37 22 V37 H11 Z" />
+    <path d="M20 37 V28 H28 V37" />
+  </g>
+  <text x="50" y="31" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.2" fill="#9aa0b3">Dock House</text>
+</svg>

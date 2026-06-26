@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary palette */
+  --color-sw-orange: #dd3e00;
+  --color-sw-black: #020219;
+  --color-sw-white: #ffffff;
+
+  /* Secondary palette */
+  --color-graphite: #6e7180;
+  --color-space: #9da2b3;
+  --color-steel: #bcbfcc;
+  --color-smoke: #d3d6e0;
+  --color-cloud: #edeff7;
+
+  /* Semantic tokens (shadcn-compatible) mapped to the Spatial Works brand.
+     Lets ui/ components use bg-primary, text-card-foreground, ring-ring, etc. */
+  --color-background: #ffffff;
+  --color-foreground: #020219;
+  --color-primary: #020219;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f5f7fa;
+  --color-secondary-foreground: #020219;
+  --color-card: #ffffff;
+  --color-card-foreground: #020219;
+  --color-muted: #f5f7fa;
+  --color-muted-foreground: #6e7180;
+  --color-accent: #f3f5f8;
+  --color-accent-foreground: #020219;
+  --color-border: #e3e7ec;
+  --color-input: #e3e7ec;
+  --color-ring: rgba(2, 2, 25, 0.18);
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+
+  /* Type — Geist is the sole brand typeface */
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-sw-white);
+    color: var(--color-sw-black);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-sw-orange);
+    color: var(--color-sw-white);
+  }
+}
+
+@layer utilities {
+  /* Geist display tracking from brand type hierarchy (-3% / -2%) */
+  .track-display {
+    letter-spacing: -0.03em;
+  }
+  .track-body {
+    letter-spacing: -0.02em;
+  }
+  /* Label / kicker — Geist, uppercase. 16px floor. */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 1rem; /* 16px — brand minimum */
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  /* Navigation label (Geist). 16px floor. */
+  .nav-link {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  /* Slow, continuous horizontal scroll for the case-study rail. */
+  @keyframes sw-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: sw-marquee 70s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none;
+    }
+  }
+}

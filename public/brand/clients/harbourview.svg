@@ -1,0 +1,8 @@
+<svg viewBox="0 0 196 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <g stroke="#9aa0b3" stroke-width="2.6" stroke-linecap="round">
+    <path d="M9 32 A15 15 0 0 1 39 32" />
+    <path d="M15 32 A9 9 0 0 1 33 32" />
+    <path d="M21 32 A3 3 0 0 1 27 32" />
+  </g>
+  <text x="52" y="31" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.2" fill="#9aa0b3">Harbourview</text>
+</svg>

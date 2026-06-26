@@ -1,0 +1,7 @@
+<svg viewBox="0 0 168 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <g stroke="#9aa0b3" stroke-width="2.6" stroke-linecap="round">
+    <path d="M9 19 C15 13 21 25 27 19 C33 13 39 25 39 19" />
+    <path d="M9 28 C15 22 21 34 27 28 C33 22 39 34 39 28" />
+  </g>
+  <text x="50" y="31" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.2" fill="#9aa0b3">Liffey &amp; Co</text>
+</svg>
