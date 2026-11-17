@@ -88,7 +88,6 @@ export function ContactPage() {
 
   useEffect(() => {
     document.title = 'Contact — Spatial Works'
-    window.scrollTo(0, 0)
   }, [])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

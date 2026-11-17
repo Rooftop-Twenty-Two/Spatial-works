@@ -2,6 +2,7 @@ import * as React from "react";
 import { ArrowUpRight } from "lucide-react";
 
 import { Button, type ButtonProps } from "@/components/ui/button";
+import { SmartLink } from "@/components/ui/smart-link";
 import { cn } from "@/lib/utils";
 
 type ArrowButtonTone = "dark" | "light" | "outline";
@@ -48,7 +49,7 @@ const ArrowButton = React.forwardRef<HTMLButtonElement, ArrowButtonProps>(
     if (href) {
       return (
         <Button asChild className={classes} {...props}>
-          <a href={href}>{inner}</a>
+          <SmartLink href={href}>{inner}</SmartLink>
         </Button>
       );
     }

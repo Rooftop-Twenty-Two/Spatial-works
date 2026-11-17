@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 
 import { ArrowButton } from '@/components/ui/button-with-icon'
+import { SmartLink } from '@/components/ui/smart-link'
 import {
   CLIENTS,
   Container,
@@ -68,7 +69,6 @@ const VALUES = [
 export function AboutPage() {
   useEffect(() => {
     document.title = 'About — Spatial Works'
-    window.scrollTo(0, 0)
   }, [])
 
   return (
@@ -175,7 +175,7 @@ export function AboutPage() {
 
             <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-3">
               {SECTORS.map((s) => (
-                <a key={s.name} href="/#projects" className="group block">
+                <SmartLink key={s.name} href="/#projects" className="group block">
                   <div className="aspect-[16/10] w-full overflow-hidden rounded-xl">
                     <img
                       src={s.img}
@@ -189,7 +189,7 @@ export function AboutPage() {
                   <p className="mt-1 max-w-xs text-base leading-relaxed text-graphite">
                     {s.line}
                   </p>
-                </a>
+                </SmartLink>
               ))}
             </div>
           </Container>

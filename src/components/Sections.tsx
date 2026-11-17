@@ -5,6 +5,7 @@ import { ChevronDown } from 'lucide-react'
 
 import { ArrowButton } from '@/components/ui/button-with-icon'
 import { OriginButton } from '@/components/ui/origin-button'
+import { SmartLink } from '@/components/ui/smart-link'
 
 /* ------------------------------------------------------------------ */
 /*  Shared primitives                                                  */
@@ -113,9 +114,9 @@ export function Header({ onOpenMobile }: { onOpenMobile: () => void }) {
         onMouseLeave={() => setMega(false)}
       >
         <div className="flex h-16 w-full items-center justify-between px-6 md:h-20 md:px-10 lg:px-16">
-          <a href="#top" aria-label="Spatial Works home" onMouseEnter={() => setMega(false)}>
+          <SmartLink href={sectionHref('top')} aria-label="Spatial Works home" onMouseEnter={() => setMega(false)}>
             <img src="/brand/wordmark-orange.svg" alt="Spatial Works" className="h-5 w-auto md:h-6" />
-          </a>
+          </SmartLink>
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 lg:flex">
@@ -136,14 +137,14 @@ export function Header({ onOpenMobile }: { onOpenMobile: () => void }) {
               />
             </button>
             {NAV_LINKS.map((l) => (
-              <a
+              <SmartLink
                 key={l.label}
                 href={l.to ?? sectionHref(l.id ?? '')}
                 onMouseEnter={() => setMega(false)}
                 className="nav-link py-2 text-sw-black transition-colors hover:text-sw-orange"
               >
                 {l.label}
-              </a>
+              </SmartLink>
             ))}
             <ArrowButton href="/contact" tone="dark" className="ml-2">
               Get in touch
@@ -176,13 +177,13 @@ export function Header({ onOpenMobile }: { onOpenMobile: () => void }) {
                 <ul className="mt-4 space-y-2.5">
                   {g.items.map((it) => (
                     <li key={it}>
-                      <a
+                      <SmartLink
                         href={sectionHref('solutions')}
                         onClick={() => setMega(false)}
                         className="track-display text-lg font-medium text-sw-black/70 transition-colors hover:text-sw-orange"
                       >
                         {it}
-                      </a>
+                      </SmartLink>
                     </li>
                   ))}
                 </ul>
@@ -190,7 +191,7 @@ export function Header({ onOpenMobile }: { onOpenMobile: () => void }) {
             ))}
 
             {/* Featured project */}
-            <a
+            <SmartLink
               href={sectionHref('projects')}
               onClick={() => setMega(false)}
               className="group block sm:col-span-2 lg:col-span-1"
@@ -207,7 +208,7 @@ export function Header({ onOpenMobile }: { onOpenMobile: () => void }) {
                 {MEGA_FEATURED.title}
               </h4>
               <p className="mt-0.5 text-base text-graphite">{MEGA_FEATURED.location}</p>
-            </a>
+            </SmartLink>
           </div>
         </div>
       </div>
@@ -241,13 +242,13 @@ function OverlayMenu({ onClose }: { onClose: () => void }) {
           <ul className="mt-6 space-y-2">
             {NAV_ITEMS.map((item) => (
               <li key={item}>
-                <a
+                <SmartLink
                   href={itemHref(item)}
                   onClick={onClose}
                   className="track-display block text-4xl font-semibold leading-tight transition-colors hover:text-steel md:text-6xl"
                 >
                   {item}
-                </a>
+                </SmartLink>
               </li>
             ))}
           </ul>
@@ -260,13 +261,13 @@ function OverlayMenu({ onClose }: { onClose: () => void }) {
               <ul className="mt-5 space-y-3">
                 {g.items.map((it) => (
                   <li key={it}>
-                    <a
+                    <SmartLink
                       href={sectionHref('solutions')}
                       onClick={onClose}
                       className="text-lg text-steel transition-colors hover:text-sw-white"
                     >
                       {it}
-                    </a>
+                    </SmartLink>
                   </li>
                 ))}
               </ul>
@@ -923,12 +924,12 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               {NAV_ITEMS.map((item) => (
                 <li key={item}>
-                  <a
+                  <SmartLink
                     href={PAGE_ROUTES[item] ?? sectionHref(item.toLowerCase())}
                     className="text-lg text-steel transition-colors hover:text-sw-white"
                   >
                     {item}
-                  </a>
+                  </SmartLink>
                 </li>
               ))}
             </ul>
@@ -978,6 +979,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
 /* ------------------------------------------------------------------ */
 
 export function Page() {
+  useEffect(() => {
+    document.title = 'Spatial Works — Exceptional Spaces, Expertly Crafted'
+  }, [])
+
   return (
     <SiteShell>
       <Hero />
